@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animación CSS - Foto</title>
+
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body{
+      width: 100%;
+      height: 100vh;
+
+      background-image: url(foto.abuelos.jpeg.jpeg);
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .texto{
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      background-color: rgba(0,0,0,0.5);
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 18px;
+    }
+
+    
+    .flash{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      opacity: 0;
+    }
+
+    .camara{
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+    }
+
+    .camara img{
+      width: 100%;
+    }
+
+
+    .foto{
+      position: absolute;
+      bottom: -400px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 250px;
+      height: 320px;
+      background-color: white;
+      border-radius: 10px;
+      padding: 12px;
+      box-shadow: 0px 15px 30px rgba(0,0,0,0.7);
+    }
+
+    .foto .imagen_foto{
+      width: 100%;
+      height: 220px;
+      border-radius: 8px;
+      background-image: url(foto.abuelos.jpeg.jpeg);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .foto p{
+      margin-top: 12px;
+      font-weight: bold;
+      color: black;
+      text-align: center;
+    }
+
+    body:hover .camara{
+      animation: bajar_camara 2.5s ease-in-out forwards;
+
+    }
+    
+
+    body:hover .flash{
+      animation: flash_pantalla 2.5s ease-in-out forwards;
+    }
+
+    body:hover .foto{
+      animation: salir_foto 2.5s ease-in-out forwards;
+    }
+
+
+    @keyframes bajar_camara{
+      0%{
+        top: -200px;
+      }
+      40%{
+        top: 50px;
+      }
+      60%{
+        top: 50px;
+        transform: translateX(-50%) rotate(-3deg);
+      }
+      80%{
+        top: 50px;
+        transform: translateX(-50%) rotate(3deg);
+      }
+      100%{
+        top: 50px;
+        transform: translateX(-50%) rotate(0deg);
+      }
+    }
+
+    @keyframes flash_pantalla{
+      0%{
+        opacity: 0;
+      }
+      45%{
+        opacity: 0;
+      }
+      50%{
+        opacity: 1;
+      }
+      55%{
+        opacity: 0;
+      }
+      100%{
+        opacity: 0;
+      }
+    }
+
+    @keyframes salir_foto{
+      0%{
+        bottom: -400px;
+        opacity: 0;
+      }
+      55%{
+        bottom: -400px;
+        opacity: 0;
+      }
+      70%{
+        bottom: 60px;
+        opacity: 1;
+        transform: translateX(-50%) rotate(-6deg);
+      }
+      85%{
+        bottom: 50px;
+        transform: translateX(-50%) rotate(4deg);
+      }
+      100%{
+        bottom: 55px;
+        opacity: 1;
+        transform: translateX(-50%) rotate(0deg);
+      }
+
+    
+    }
+@keyframes flotar {
+  0% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(10px); }
+  100% { transform: translateX(-50%) translateY(0); }
+}
+
+  </style>
+</head>
+
+<body>
+
+  <div class="texto">Pasa el mouse por la imagen</div>
+
+  <div class="camara">
+    <img src="camara.1-removebg-preview.png" alt="Cámara">
+  </div>
+
+  <div class="flash"></div>
+
+  <div class="foto">
+    <div class="imagen_foto"></div>
+    <p>Recuerdo</p>
+  </div>
+
+</body>
+</html>
